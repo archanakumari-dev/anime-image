@@ -13,7 +13,12 @@ button.addEventListener("click",async function(event){
         const randomImageURL=json.results[0].url;
         image.src=randomImageURL; 
         const randomAnimeName=json.results[0].artist_name;
-        animeName.innerText=randomAnimeName;
+        if (/^[a-zA-Z]$/.test(randomAnimeName.charAt(0))) {
+            animeName.innerText=randomAnimeName;
+          } else {
+            animeName.innerText="random";
+          }
+        
         animeContainerEl.style.display="block";
         button.innerText="Get Anime"
         button.disabled=false;
